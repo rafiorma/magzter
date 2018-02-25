@@ -1,3 +1,5 @@
+#BY SHUBHAM GHOSH
+
 import requests
 import time
 import img2pdf
@@ -33,14 +35,14 @@ def images(link):
 # 'https://maghtml.magzter.com/data/7965/1519128696/267039eX3RCxVy/jpg/.jpg'(Sample link)
 def imgtopdf(output):
     my_list=[]
-    for infile in sorted(glob.glob('G:\magazins\onandamela\*jpg'), key=numericalSort):
+    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter\*jpg'), key=numericalSort):
         my_list.append(infile)
     with open(output, "wb") as f:
         print(my_list)
         f.write(img2pdf.convert(my_list))
 
 def delete():
-    for infile in sorted(glob.glob('G:\magazins\onandamela\*jpg'), key=numericalSort):
+    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter*jpg'), key=numericalSort):
         os.remove(infile)
 
 
