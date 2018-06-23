@@ -18,14 +18,14 @@ def numericalSort(value):
 
 def images(link):
     url = link
-    for x in range(1, 40):
-        url_working = url + str(x) + ".jpg"
+    for x in range(1, 400):
+        url_working = url +"page"+ str(x) + ".swf"
         #    print url_working
         #    urllib.request.urlretrieve(url_working)
         requests.codes(url_working)
         r = requests.get(url_working, stream=True)
         if(r.status_code==200):
-            with open(str(x) + '.jpg', 'wb') as fd:
+            with open(str(x) + '.swf', 'wb') as fd:
                 for chunk in r.iter_content(chunk_size=512):
                     fd.write(chunk)
         else:
@@ -35,18 +35,18 @@ def images(link):
 # 'https://maghtml.magzter.com/data/7965/1519128696/267039eX3RCxVy/jpg/.jpg'(Sample link)
 def imgtopdf(output):
     my_list=[]
-    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter\*jpg'), key=numericalSort):
+    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter\*swf'), key=numericalSort):
         my_list.append(infile)
     with open(output, "wb") as f:
         print(my_list)
         f.write(img2pdf.convert(my_list))
 
 def delete():
-    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter*jpg'), key=numericalSort):
+    for infile in sorted(glob.glob('G:\magazins\onandamela\magzter*swf'), key=numericalSort):
         os.remove(infile)
 
 
-images('https://maghtml.magzter.com/data/7965/1519128696/267039eX3RCxVy/jpg/')
+images('http://magztertemp.s3.amazonaws.com/1414486952/1430712115/pdf/99225koOmrLWc/pageflipdata/pages/')
 time.sleep(2)
 print("waiting")
 imgtopdf('G:\magazins\Anandamela.pdf')
